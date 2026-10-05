@@ -1,0 +1,15 @@
+[Unit]
+Description=Label Print Portal
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/label-portal
+ExecStart=/home/pi/label-portal/venv/bin/python /home/pi/label-portal/app.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

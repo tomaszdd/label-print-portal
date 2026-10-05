@@ -1,0 +1,6 @@
+venv/
+__pycache__/
+usb_events.log
+designs.json
+designs.json.tmp
+*.bak-*

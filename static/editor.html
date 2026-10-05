@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Label Designer</title>
+<link rel="stylesheet" href="/static/editor.css">
+</head>
+<body>
+<header class="topbar">
+  <h1>🏷️ Label Designer</h1>
+  <span id="tapePill" class="pill">Checking printer…</span>
+  <div class="spacer"></div>
+  <button id="undoBtn" class="ghost" title="Undo (Ctrl+Z)">↶</button>
+  <button id="redoBtn" class="ghost" title="Redo (Ctrl+Shift+Z)">↷</button>
+  <button id="newBtn" class="ghost" title="Start a blank label">New</button>
+</header>
+
+<section class="stage card">
+  <div class="tape-scroll" id="tapeScroll">
+    <div class="tape" id="tape"><canvas id="view"></canvas></div>
+  </div>
+  <div class="stage-foot">
+    <span id="dims"></span>
+    <span id="fitMsg"></span>
+    <label class="zoom">Zoom <input type="range" id="zoom" min="1" max="8" step="1"></label>
+  </div>
+  <p class="hint">Click an item to select it. Drag sideways to reorder or up and down to nudge it. Double-click text to edit it.</p>
+</section>
+
+<main class="grid">
+  <div class="col">
+    <section class="card">
+      <h2>Add</h2>
+      <div class="addbar">
+        <button data-add="text">𝐓 Text</button>
+        <button data-add="icon">★ Icon</button>
+        <button data-add="qr">▦ QR</button>
+        <button data-add="image">🖼 Image</button>
+        <button data-add="divider">│ Divider</button>
+        <button data-add="spacer">↔ Space</button>
+      </div>
+      <div id="layers" class="layers"></div>
+    </section>
+
+    <section class="card" id="propsCard">
+      <h2 id="propsTitle">Item</h2>
+      <div id="props" class="props"></div>
+    </section>
+  </div>
+
+  <div class="col">
+    <section class="card print-card">
+      <h2>Print</h2>
+      <div class="row">
+        <label>Copies <input type="number" id="copies" min="1" max="20" value="1"></label>
+        <label class="check"><input type="checkbox" id="cutmark" checked> Cut mark</label>
+      </div>
+      <button id="printBtn" class="primary">Print label</button>
+      <div id="printStatus" class="status" hidden></div>
+    </section>
+
+    <section class="card">
+      <h2>Label</h2>
+      <div class="props" id="labelProps"></div>
+    </section>
+
+    <section class="card">
+      <div class="tabs">
+        <button data-tab="templates" class="on">Templates</button>
+        <button data-tab="saved">Saved</button>
+        <button data-tab="history">Printed</button>
+      </div>
+      <div class="row save-row" id="saveRow">
+        <input type="text" id="saveName" placeholder="Name this design" maxlength="80">
+        <button id="saveBtn">Save</button>
+      </div>
+      <div id="library" class="library"></div>
+    </section>
+
+    <p class="foot">Need the old form? <a href="/simple">Simple text/image page</a></p>
+  </div>
+</main>
+
+<input type="file" id="imageFile" accept="image/*" hidden>
+<script src="/static/qrcode.min.js"></script>
+<script src="/static/editor.js"></script>
+</body>
+</html>
