@@ -1,5 +1,7 @@
 # Label Print Portal
 
+![Label Designer web UI with a label preview](docs/screenshot.png)
+
 Web portal for a **Brother P-touch PT-1230PC** label printer, driven from a
 Raspberry Pi Zero W.
 
